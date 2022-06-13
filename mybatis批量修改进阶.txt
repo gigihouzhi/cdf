@@ -1,0 +1,25 @@
+
+        <!--sql语句中的 case when  then  end  四个连在一起，可以达到JAVA代码中的
+        swich循环
+        case 是 循环中的  值判断
+        when 是具体判断的值
+        then 是判断值成功，给出的结果
+        end 表示这个SQL语句的循环结束
+        -->
+        UPDATE t_sys_user SET realName = CASE id
+        <foreach collection="user" item="user">
+            WHEN #{user.id}  THEN  #{user.realName}
+        </foreach>
+         END
+        WHERE id IN
+        <foreach collection="user" item="user" open="(" close=")">
+            #{user.id}
+        </foreach>
+
+        这个循环完，最终得到的SQL语句
+        UPDATE t_sys_user SET realName = CASE id
+        WHEN '1'  THEN  '测试'
+        WHEN '2'  THEN  '测试2555'
+        WHEN '3'  THEN  '测试3'
+        END
+        WHERE id IN ('1','2','3')

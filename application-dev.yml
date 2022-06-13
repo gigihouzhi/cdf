@@ -8,5 +8,4 @@ eureka:
     fetch-registry: false #false表示自己端就是注册中心，我的职务就是维护服务实例，并不需要去检索服务
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka/
-config:
-  info: main
+
